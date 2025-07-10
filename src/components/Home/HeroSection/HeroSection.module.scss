@@ -1,0 +1,262 @@
+@use "@/styles/mixins" as m;
+
+.heroSection {
+  background: linear-gradient(-170deg, #1122406e 5%, var(--website-bg) 95%);
+  border: solid 2px #112240;
+  min-height: 100dvh;
+  margin-block: 101px 100px;
+  padding-top: 0;
+  @include m.center-x-y;
+  overflow: hidden;
+}
+
+@include m.large {
+  .heroSection {
+    padding: 100px 40px;
+    margin-top: 100px;
+    min-height: auto;
+  }
+}
+
+@include m.small {
+  .heroSection {
+    padding: 90px 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  .heroSection {
+    padding: 70px 20px;
+  }
+}
+
+@include m.very-small {
+  .heroSection {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+}
+
+.heroSection .content {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+@include m.large {
+  .heroSection .content {
+    padding: 0;
+  }
+}
+
+@include m.very-small {
+  .heroSection .content {
+    padding-top: 50px;
+  }
+}
+
+.content .preHeading {
+  width: fit-content;
+  margin-bottom: 34px;
+  margin-left: 3px;
+  color: #64ffda;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+@include m.very-small {
+  .content .preHeading {
+    margin-bottom: 20px;
+  }
+}
+
+.content .myName {
+  width: max-content;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: .9;
+  font-weight: 700;
+  color: #ccd6f6;
+}
+
+@include m.large {
+  .content .myName {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+  }
+}
+
+@include m.small {
+  .content .myName {
+    font-size: clamp(2.4rem, 9vw, 5rem);
+  }
+}
+
+.content .whatIDo {
+  margin-bottom: 16px;
+  width: 80%;
+  font-size: clamp(2rem, 8vw, 5rem);
+  line-height: 1;
+  font-weight: 700;
+  color: var(--main-text-color);
+}
+
+@include m.large {
+  .content .whatIDo {
+    font-size: clamp(2rem, 7vw, 5rem);
+    width: 86%;
+  }
+}
+
+@include m.small {
+  .content .whatIDo {
+    width: 100%;
+    font-size: clamp(2.25rem, 9vw, 5rem);
+  }
+}
+
+.content .description {
+  margin-bottom: 40px;
+  max-width: 610px;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: .5px;
+  color: var(--main-text-color);
+}
+
+@include m.medium {
+  .content .description {
+    max-width: 560px;
+  }
+}
+
+@include m.small {
+  .content .description {
+    font-size: 1.1rem;
+    max-width: 520px;
+  }
+}
+
+.content .buttons {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  user-select: none;
+}
+
+@media (max-width: 520px) {
+  .content .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.content .buttons a {
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: .5px;
+  font-size: .9rem;
+  overflow: hidden;
+  position: relative;
+  transition:
+    color .3s ease,
+    background-color .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    opacity .3s ease;
+}
+
+@media (max-width: 520px) {
+  .content .buttons a {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.content .buttons .viewWorkBtn {
+  border: none;
+  background: linear-gradient(135deg, #64ffda, #64ffda);
+  color: var(--website-bg);
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding: 13px 32px;
+  box-shadow: 0 4px 15px rgba(100, 255, 218, .2);
+  overflow: hidden;
+  transition:
+    outline .1s var(--ease-main),
+    box-shadow .05s .1s var(--ease-main);
+
+  &:hover,
+  &:focus-visible {
+    background: linear-gradient(135deg, #64ffda, #64ffda);
+    box-shadow: 0 5px 20px rgba(100, 255, 218, .3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:focus-visible {
+    outline: solid 2px #fff;
+    outline-offset: -1px;
+  }
+}
+
+.content .buttons .viewWorkBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, .1),
+      rgba(255, 255, 255, .3),
+      rgba(255, 255, 255, .1));
+  transition: left .5s ease-out;
+}
+
+.content .buttons .getInTouchBtn {
+  background: transparent;
+  color: var(--main-text-color);
+  border: 1px solid var(--main-text-color);
+  box-shadow: 0 4px 10px rgba(136, 146, 176, .1);
+  transition:
+    outline .1s var(--ease-main),
+    color .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: #ccd6f6;
+    border-color: #ccd6f6;
+    box-shadow: 0 6px 20px rgba(135, 211, 194, .15);
+
+    &::before {
+      opacity: .8;
+    }
+  }
+
+  &:focus-visible {
+    outline: solid 2px #fff;
+    outline-offset: -1px;
+  }
+}
+
+.content .buttons .getInTouchBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      transparent,
+      rgba(100, 255, 218, .05),
+      transparent);
+  opacity: 0;
+  transition: opacity .3s ease;
+}

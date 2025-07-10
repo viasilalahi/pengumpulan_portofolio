@@ -1,0 +1,63 @@
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundPage>h1 {
+  color: #64ffda;
+  font-family: var(--font-mono);
+  font-size: clamp(6.25rem, 25vw, 12.5rem);
+  line-height: 1.1;
+}
+
+.notFoundPage>h2 {
+  color: #ccd6f6;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  font-size: clamp(1.875rem, 5vw, 3.125rem);
+  font-weight: 400;
+}
+
+.notFoundPage .homeButton {
+  display: inline-block;
+  color: #64ffda;
+  background-color: transparent;
+  border: 1px solid #64ffda;
+  border-radius: 4px;
+  padding: 16px 28px;
+  font-size: .875rem;
+  font-family: var(--font-mono);
+  line-height: 1;
+  text-decoration: none;
+  margin-top: 40px;
+  position: relative;
+  transition:
+    color .25s var(--ease-main),
+    box-shadow .25s var(--ease-main),
+    background .25s var(--ease-main);
+
+  &:hover {
+    color: var(--website-bg);
+    box-shadow: 0 5px 15px rgba(100, 255, 218, .2);
+    background: #64ffda;
+  }
+}
+
+.notFoundPage .homeButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, .1),
+      rgba(255, 255, 255, .3),
+      rgba(255, 255, 255, .1));
+  transition: opacity .5s ease-out, left .5s ease-out;
+}
+
+.notFoundPage .homeButton:hover::before {
+  opacity: 1;
+  left: 100%;
+}

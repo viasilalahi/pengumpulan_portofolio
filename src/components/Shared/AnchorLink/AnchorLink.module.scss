@@ -1,0 +1,28 @@
+.link {
+  display: inline-block;
+  position: relative;
+  color: #64ffda;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  position: relative;
+  bottom: 5px;
+  background-color: #64ffda;
+  opacity: .5;
+  transition:
+    width .25s var(--ease-main),
+    opacity .25s .15s var(--ease-main);
+}
+
+.link:where(:hover, :focus-visible)::after {
+  width: 100%;
+  opacity: 1;
+}

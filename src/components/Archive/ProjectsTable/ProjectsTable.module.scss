@@ -1,0 +1,22 @@
+@use "@/styles/mixins" as m;
+
+@include m.medium {
+  .hideOnMobile {
+    display: none;
+  }
+}
+
+.tableWrapper {
+  margin: 100px -20px;
+}
+
+@include m.small {
+  .tableWrapper {
+    margin: 50px -10px;
+  }
+}
+
+.tableWrapper .table {
+  width: 100%;
+  border-collapse: collapse;
+}

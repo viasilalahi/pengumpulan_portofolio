@@ -1,0 +1,23 @@
+@use "@/styles/mixins" as m;
+
+.archive {
+  padding: 200px 140px;
+}
+
+@include m.large {
+  .archive {
+    padding: 200px 110px;
+  }
+}
+
+@include m.small {
+  .archive {
+    padding: 150px 25px;
+  }
+}
+
+@include m.very-small {
+  .archive {
+    padding: 150px 15px;
+  }
+}

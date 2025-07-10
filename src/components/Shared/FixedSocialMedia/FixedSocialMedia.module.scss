@@ -1,0 +1,79 @@
+@use "@/styles/mixins" as m;
+
+.socialMedia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 40px;
+  z-index: 10;
+  color: #a8b2d1;
+}
+
+@include m.small {
+  .socialMedia {
+    display: none;
+  }
+}
+
+.socialMedia::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0 auto;
+  background-color: #a8b2d1;
+}
+
+.socialMedia li:last-child {
+  margin-bottom: 20px;
+}
+
+.socialMedia a {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  outline-offset: -5px;
+  transition: translate .25s var(--ease-main),
+    color .25s var(--ease-main),
+    outline .1s var(--ease-main),
+    outline-offset .1s var(--ease-main);
+
+  &:hover,
+  &:focus-visible {
+    translate: 0 -3px;
+  }
+
+  &:focus-visible {
+    color: #64ffda;
+    outline: solid 2px #64ffda;
+    outline-offset: -2px;
+  }
+}
+
+.socialMedia a:hover svg {
+  stroke: #64ffda;
+
+  &[data-type=twitter] {
+    fill: #64ffda;
+  }
+}
+
+.socialMedia a:focus-visible svg[data-type=twitter] {
+  fill: #64ffda;
+}
+
+.socialMedia a svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  transition:
+    fill .25s var(--ease-main),
+    stroke .25s var(--ease-main);
+
+  &[data-type=twitter] {
+    fill: #a8b2d1;
+  }
+}

@@ -1,0 +1,131 @@
+@use "@/styles/mixins" as m;
+
+.header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  padding-inline: 50px;
+  width: 100%;
+  height: 100px;
+  background-color: rgba(10, 25, 47, .85);
+  backdrop-filter: blur(10px);
+  transition:
+    translate .25s var(--ease-main),
+    box-shadow .25s var(--ease-main),
+    height .25s var(--ease-main);
+
+  &.active {
+    height: 70px;
+    translate: 0 0;
+    background-color: rgba(10, 25, 47, .85);
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, .7);
+  }
+
+  &.hidden {
+    height: 70px;
+    translate: 0 calc(-70px);
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, .7);
+  }
+}
+
+@include m.small {
+  .header {
+    padding: 0 25px;
+  }
+}
+
+@include m.very-small {
+  .header {
+    padding: 0 15px;
+  }
+}
+
+.header .navLinks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  color: #ccd6f6;
+  font-family: var(--font-mono);
+  z-index: 12;
+}
+
+.header .navLinks .logo {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  width: 42px;
+  height: 42px;
+  position: relative;
+  z-index: 1;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(1.12) contrast(1.12) saturate(1.08);
+  }
+}
+
+.header .navLinks .logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: linear-gradient(120deg,
+      transparent 40%,
+      rgba(255, 255, 255, .53) 50%,
+      transparent 60%);
+  transition: opacity .18s var(--ease-main);
+}
+
+.header .navLinks .logo:where(:hover, :focus-visible)::before {
+  opacity: 1;
+}
+
+.header .navLinks .wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@include m.small {
+  .header .navLinks .wrapper {
+    display: none;
+  }
+}
+
+.header .wrapper .resume {
+  color: #5ff1cf;
+  background-color: transparent;
+  border: 1px solid #5ff1cf;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  line-height: 1;
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: .8rem;
+  user-select: none;
+  transition:
+    color .2s var(--ease-main),
+    background-color .2s var(--ease-main),
+    border-color .2s var(--ease-main),
+    box-shadow .2s var(--ease-main),
+    outline .1s var(--ease-main);
+
+  &:hover {
+    background-color: #64ffda;
+    color: var(--website-bg);
+    box-shadow: 0 4px 6px rgba(100, 255, 218, .2);
+  }
+
+  &:focus-visible {
+    outline: solid 2px #64ffda;
+    outline-offset: -1px;
+  }
+}

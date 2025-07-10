@@ -1,0 +1,59 @@
+@use "@/styles/mixins" as m;
+
+.socialMedia {
+  color: #a8b2d1;
+  gap: 10px;
+  display: none;
+}
+
+@include m.small {
+  .socialMedia {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.socialMedia a {
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  padding: 10px;
+  outline-offset: -5px;
+  transition: translate .25s var(--ease-main),
+    color .25s var(--ease-main),
+    outline .1s var(--ease-main),
+    outline-offset .1s var(--ease-main);
+
+  &:hover {
+    translate: 0 -3px;
+  }
+
+  &:focus-visible {
+    color: #64ffda;
+    outline: solid 2px #64ffda;
+    outline-offset: -2px;
+  }
+}
+
+.socialMedia a:hover svg {
+  stroke: #64ffda;
+
+  &[data-type=twitter] {
+    fill: #64ffda;
+  }
+}
+
+.socialMedia a svg {
+  width: 20px;
+  height: 20px;
+  transition:
+    fill .25s var(--ease-main),
+    stroke .25s var(--ease-main);
+
+  &[data-type=twitter] {
+    fill: #a8b2d1;
+  }
+}
+
+.socialMedia a:focus-visible svg[data-type=twitter] {
+  fill: #64ffda;
+}
